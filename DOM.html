@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var style = {
+        color: "blue",
+        backgroundColor: "lightBlue",
+        fontSize: "20px",
+        fontWeight: "bold",
+        fontStyle: "underLine",
+        textAlign: "center",
+        border: "2px solid black",
+        padding: "10px",
+        overflow: "scroll",
+      };
+      var box =
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero nisi atque, fugiat doloribus quaerat rem architecto eius accusantium nihilperferendis rerum explicabo aut eligendi reiciendis eum deserunt magnam, assumenda dignissimos.";
+
+      var divison = document.createElement("div");
+      divison.style.color = style.color;
+      divison.style.fontSize = "16px";
+      divison.style.height = "600px";
+      divison.style.width = "300px";
+      divison.style.border = "2px solid black";
+      divison.style.fontWeight = style.fontWeight;
+      divison.style.display = "flex";
+      divison.style.flexDirection = "column";
+      divison.style.alignItems = "center";
+      divison.style.justifyContent = "center";
+      divison.style.rowGap = "10px";
+      document.body.appendChild(divison);
+
+      var h = document.createElement("h2");
+      h.innerText = "DOM JS";
+      divison.appendChild(h);
+
+      var para = document.createElement("p");
+      para.innerText = box;
+      para.style.height = "200px";
+      para.style.padding = style.padding;
+      divison.appendChild(para);
+
+      var button = document.createElement("button");
+      button.innerText = "submit";
+      button.onclick = function () {
+        door();
+      };
+      button.style.color = style.color;
+      button.style.fontWeight = style.fontWeight;
+      button.style.padding = "5px";
+      button.style.cursor = "pointer";
+      divison.appendChild(button);
+
+      var image = document.createElement("div");
+      image.style.fontSize = "25px";
+      image.style.height = "40px";
+      image.style.width = "150px";
+      image.style.border = "1px solid black";
+      image.style.paddingTop = "10px";
+      image.style.color = "white";
+      image.style.textAlign = "center";
+      image.style.letterSpacing = "1px";
+      divison.appendChild(image);
+
+      var image1 = document.createElement("div");
+      image1.style.fontSize = "20px";
+      image1.style.height = "30px";
+      image1.style.width = "200px";
+      image1.style.border = "1px solid black";
+      image1.style.textAlign = "center";
+      image1.style.paddingTop = "10px";
+      divison.appendChild(image1);
+
+      function door() {
+        function randomColor() {
+          var a = "0123456789ABCDEF";
+
+          var color = "#";
+          for (var i = 0; i < 6; i++) {
+            var color = color + a[Math.floor(Math.random() * a.length)];
+          }
+          para.style.color = color;
+          image.innerText = color;
+          image.style.backgroundColor = color;
+        }
+        randomColor();
+
+        function google() {
+          var font = [
+            "Agency FB",
+            "Algerian",
+            "Baskerville Old Face",
+            "Bradley Hand ITC",
+            "Blackadder ITC",
+            "Comic Sans MS",
+          ];
+          {
+            var x = font[Math.floor(Math.random() * font.length)];
+          }
+          para.style.fontFamily = x;
+          image1.innerText = x;
+        }
+        google();
+      }
+      door();
+    </script>
+  </body>
+</html>

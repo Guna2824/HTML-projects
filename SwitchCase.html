@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Switch Case</title>
+  </head>
+  <body>
+    <!-- <h2>Switch Case</h2>
+
+    <div>
+      <label><h3>Qualification</h3></label>
+      <select id="id">
+        <option value="illitarate">illitarate</option>
+        <option value="highschool">highschool</option>
+        <option value="ug">ug</option>
+        <option value="pg">pg</option>
+        <option value="docterate">docterate</option>
+      </select>
+      <p></p>
+      <button onclick="apply()" id="submit">submit</button>
+    </div> -->
+
+    <script>
+      var x = document.createElement("div");
+      document.body.appendChild(x);
+
+      var y = document.createElement("h2");
+      y.innerText = "Switch Case";
+      y.style.color = "blue";
+      x.appendChild(y);
+
+      var z = document.createElement("h3");
+      z.innerText = "Qualificatin";
+      z.style.color = "red";
+      x.appendChild(z);
+
+      var w = document.createElement("select");
+      w.setAttribute("id", "select");
+      w.style.cursor = "pointer";
+      x.appendChild(w);
+
+      var a0 = document.createElement("option", { value: "SELECT" });
+      var a1 = document.createElement("option", { value: "ILLITARATE" });
+      var a2 = document.createElement("option", { value: "HIGH SCHOOL" });
+      var a3 = document.createElement("option", { value: "UG" });
+      var a4 = document.createElement("option", { value: "PG" });
+      var a5 = document.createElement("option", { value: "DOCTERATE" });
+      a0.innerText = "SELECT";
+      a1.innerText = "ILLITARATE";
+      a2.innerText = "HIGH SCHOOL";
+      a3.innerText = "UG";
+      a4.innerText = "PG";
+      a5.innerText = "DOCTERATE";
+
+      w.appendChild(a0);
+      w.appendChild(a1);
+      w.appendChild(a2);
+      w.appendChild(a3);
+      w.appendChild(a4);
+      w.appendChild(a5);
+
+      var button = document.createElement("button");
+      button.setAttribute("id", "button");
+      button.innerText = "submit";
+      button.style.cursor = "pointer";
+      button.style.margin = "20px";
+      button.onclick = function () {
+        apply();
+      };
+      x.appendChild(button);
+
+      var u = document.createElement("p");
+      u.setAttribute("id", "result");
+      x.appendChild(u);
+
+      function apply() {
+        function jopApply(qualification) {
+          var qualification;
+          switch (qualification) {
+            case "ILLITARATE":
+              u.innerText = "Not Qualified";
+              break;
+            case "HIGH SCHOOL":
+              u.innerText = "Your Selected";
+              break;
+            case "UG":
+              u.innerText = "Your Selected";
+              break;
+            case "PG":
+              u.innerText = "Over Qualified";
+              break;
+            case "DOCTERATE":
+              u.innerText = "Over Qualified";
+              break;
+          }
+        }
+        jopApply(select.value);
+      }
+
+      apply();
+    </script>
+  </body>
+</html>

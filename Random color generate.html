@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object</title>
+  </head>
+  <body>
+    <h1 style="background-color: white">Random Color Generate</h1>
+    <button
+      id="rand"
+      onclick="randColor()"
+      style="width: 150px; height: 40px; font-size: 25px; cursor: pointer"
+    >
+      Click Here!
+    </button>
+
+    <script>
+      var doct = document.createElement("div");
+      document.body.appendChild(doct);
+      function randColor() {
+        var symbols = "0123456789ABCDEF";
+        var color = "#";
+        for (let i = 0; i < 6; i++) {
+          var color = color + symbols[Math.floor(Math.random() * 16)];
+        }
+        rand.innerHTML = color;
+        document.body.style.background = color;
+        document.body.style.color = color;
+      }
+      console.log(color);
+    </script>
+  </body>
+</html>

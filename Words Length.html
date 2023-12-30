@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Count Words Length</title>
+  </head>
+  <body>
+    <div
+      style="
+        height: 400px;
+        width: 300px;
+        border: 1px solid black;
+        text-align: center;
+        background-color: beige;
+      "
+    >
+      <h2 style="font-family: sans-serif">Count Words Length</h2>
+      <div
+        style="
+          height: auto;
+          width: 270px;
+          border: 1px solid transparent;
+          margin-left: 13px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 20px;
+          align-items: center;
+          justify-content: center;
+        "
+      >
+        <textarea
+          style="
+            height: 150px;
+            width: 200px;
+            border: 1px solid black;
+            margin-top: 10px;
+            overflow-y: scroll;
+            outline: none;
+          "
+          id="input"
+        ></textarea>
+        <button
+          style="
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+            padding: 5px;
+          "
+          onclick="calculate()"
+          type="submit"
+        >
+          Count
+        </button>
+        <div
+          style="
+            color: darkblue;
+            font-size: 25px;
+            font-family: sans-serif;
+            font-weight: bold;
+          "
+          id="result"
+        ></div>
+      </div>
+    </div>
+
+    <script>
+      function calculate() {
+        let text = document.getElementById("input").value;
+        let words = text.split(" ");
+        let countValue = words.length;
+        console.log(countValue);
+        result.innerHTML = countValue + " Words";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Interviwe Question</title>
+    <style>
+      .container {
+        display: flex;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div
+        style="
+          height: 250px;
+          width: 250px;
+          border: 1px solid #130404;
+          text-align: center;
+          padding: 10px;
+          font-family: sans-serif;
+          background: fixed;
+          background: radial-gradient(
+            circle,
+            rgba(238, 174, 202, 1) 0%,
+            rgba(148, 187, 233, 1) 100%
+          );
+        "
+      >
+        <input
+          style="
+            height: 30px;
+            width: 230px;
+            padding: 2px;
+            font-size: 15px;
+            outline: none;
+            border: 1px solid black;
+            background-color: lightgoldenrodyellow;
+            text-align: center;
+            margin: 15px;
+          "
+          id="BUY"
+          type="number"
+          placeholder="ENTER PURCHASE AMOUNT"
+        />
+        <button
+          style="
+            color: white;
+            height: 30px;
+            width: 100px;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 10px;
+            padding: 3px;
+            background-color: rgb(3, 48, 61);
+            border: 1px solid black;
+            cursor: pointer;
+          "
+          onclick="calculate()"
+          type="submit"
+        >
+          BUY
+        </button>
+        <div
+          style="
+            color: yellow;
+            height: 35px;
+            width: auto;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 20px;
+            padding: 5px;
+            background: fixed;
+          "
+          id="PAY"
+        ></div>
+      </div>
+    </div>
+    <script>
+      function calculate() {
+        let buy = Number(document.getElementById("BUY").value);
+        //let buy = 15000;
+        let pay = 0;
+
+        if (buy >= 15000) {
+          pay = 10000;
+          buy = 10000;
+          console.log("Offer 1 apply", pay);
+        }
+        if (buy < 15000) {
+          pay = buy - (buy * 30) / 100;
+          console.log("Offer 2 apply", pay);
+        }
+        console.log("YOU ARE PAY ONLY RS.", pay);
+        PAY.innerHTML = "Your Pay Rs. " + pay + "/-";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EB Bill Calculator</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <!--
+        First 50 Units Rs. 0.75
+        Next 100 Units Rs. 1.00
+        Next 100 Units Rs. 1.25
+        Above 250 Units Rs. 1.50
+    -->
+
+    <section
+      style="
+        height: 400px;
+        width: 300px;
+        border: 1px solid rgb(253, 253, 253);
+        text-align: center;
+        padding: 10px;
+        font-family: sans-serif;
+        background-color: lightgoldenrodyellow;
+      "
+    >
+      <h2 style="background-color: lightgoldenrodyellow">EB BILL CALCULATOR</h2>
+      <div
+        style="
+          height: 300px;
+          width: 270px;
+          margin: 15px;
+          display: flex;
+          flex-direction: column;
+          row-gap: 20px;
+          align-items: center;
+          border: 1px solid black;
+          justify-content: center;
+          background-color: lightblue;
+        "
+      >
+        <input
+          id="input"
+          type="number"
+          style="
+            height: 30px;
+            width: auto;
+            padding: 2px;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid black;
+            background-color: lightgoldenrodyellow;
+            text-align: center;
+          "
+          placeholder="Enter Units"
+        />
+        <button
+          onclick="calculate()"
+          ;
+          style="
+            height: 30px;
+            width: auto;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px;
+            padding: 3px;
+            background-color: lightgoldenrodyellow;
+            border: 1px solid black;
+            cursor: pointer;
+          "
+          type="submit"
+        >
+          Calculate
+        </button>
+        <div
+          id="demo"
+          style="
+            height: 35px;
+            width: auto;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 5px;
+            padding: 3px;
+            background-color: lightblue;
+          "
+        ></div>
+      </div>
+    </section>
+
+    <script>
+      function calculate() {
+        var units = Number(document.getElementById("input").value);
+        var bill = 0;
+        if (units > 250) {
+          let uUnits = (units - 250) * 1.5;
+          units = 250;
+          bill = bill + uUnits;
+          console.log(bill);
+        }
+        if (units > 150) {
+          let uUnits = (units - 150) * 1.25;
+          units = 150;
+          bill = bill + uUnits;
+          console.log(bill);
+        }
+        if (units > 50) {
+          let uUnits = (units - 50) * 1;
+          units = 50;
+          bill = bill + uUnits;
+          console.log(bill);
+        }
+        if (units > 0) {
+          let uUnits = (units - 0) * 0.75;
+          units = 0;
+          bill = bill + uUnits;
+          console.log(bill);
+        }
+        console.log(bill, " Rupees");
+        demo.innerHTML = bill + " Rupees";
+      }
+    </script>
+  </body>
+</html>
