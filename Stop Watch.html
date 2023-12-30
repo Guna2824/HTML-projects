@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stop Watch</title>
+    <style>
+      * {
+        margin: auto;
+        padding: 0;
+        font-family: "Bauhaus 93";
+      }
+      #stopWatch {
+        height: 400px;
+        width: 250px;
+        background-color: bisque;
+        border: 2px solid black;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+      }
+      h2 {
+        height: 50px;
+        width: 200px;
+        font-size: 35px;
+        padding-top: 10px;
+        font-family: "Agency FB";
+        color: rgb(0, 0, 0);
+      }
+      h1 {
+        height: 40px;
+        font-size: 45px;
+        font-family: "Agency FB";
+        color: rgba(0, 0, 0, 0.9);
+        padding-bottom: 50px;
+      }
+      button {
+        height: 50px;
+        width: 150px;
+        font-size: 25px;
+        background-color: hwb(240 6% 43%);
+        color: rgba(255, 255, 255, 0.8);
+        cursor: pointer;
+        border-radius: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="stopWatch"
+      style="
+        background-image: url('sports2.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+      "
+    >
+      <h1 id="displayTime">00:00:000</h1>
+
+      <button
+        id="start"
+        type="button"
+        style="background-color: rgba(0, 130, 0, 0.9)"
+        onclick="watchStart()"
+      >
+        Start
+      </button>
+      <button
+        id="stop"
+        type="button"
+        style="background-color: rgba(255, 0, 0, 0.9)"
+        onclick="watchStop()"
+      >
+        Stop
+      </button>
+      <button id="reset" type="reset" onclick="watchReset()">Reset</button>
+      <h2>STOP WATCH</h2>
+    </div>
+
+    <script>
+      let [mSeconds, seconds, minitus] = [0, 0, 0];
+      let displayTime = document.getElementById("displayTime");
+      let timer = null;
+
+      function stopWatch() {
+        mSeconds++;
+        if (mSeconds == 100) {
+          mSeconds = 0;
+          seconds++;
+          if (seconds == 60) {
+            seconds = 0;
+            minitus++;
+          }
+        }
+        var m = minitus < 10 ? "0" + minitus : minitus;
+        var s = seconds < 10 ? "0" + seconds : seconds;
+        var mS = mSeconds < 10 ? "0" + mSeconds : mSeconds;
+
+        displayTime.innerHTML = m + ":" + s + ":" + mS;
+      }
+
+      function watchStart() {
+        if (timer !== null) {
+          clearInterval(timer);
+        }
+        timer = setInterval(stopWatch, 10);
+      }
+
+      function watchStop() {
+        clearInterval(timer);
+      }
+
+      function watchReset() {
+        clearInterval(timer);
+        [mSeconds, seconds, minitus] = [0, 0, 0];
+        displayTime.innerHTML = "00:00:000";
+      }
+    </script>
+  </body>
+</html>

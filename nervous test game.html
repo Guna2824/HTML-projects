@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nervous Test Game</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: content-box;
+        font-family: "Comic Sans MS";
+      }
+      .game {
+        height: 450px;
+        width: 1000px;
+        position: absolute;
+        top: 10px;
+        left: 100px;
+      }
+      img {
+        height: 150px;
+        width: 200px;
+      }
+      h2 {
+        color: blue;
+        margin: 0px 0px 20px 10px;
+      }
+      #result {
+        color: blue;
+        font-weight: bold;
+        font-size: 25px;
+        margin: 20px 0px 20px 30px;
+      }
+      #div4 {
+        height: 200px;
+        width: 200px;
+        border: 2px solid black;
+        border-radius: 0%;
+        background-color: black;
+        position: relative;
+        cursor: crosshair;
+      }
+      #div3 {
+        height: 200px;
+        width: 200px;
+        border: 2px solid black;
+        border-radius: 50%;
+        background-color: red;
+        position: relative;
+        left: -208px;
+        cursor: crosshair;
+      }
+      #div2 {
+        height: 135px;
+        width: 135px;
+        border: 2px solid black;
+        border-radius: 50%;
+        background-color: yellow;
+        z-index: 1;
+        position: relative;
+        left: -383px;
+        bottom: 32px;
+        cursor: crosshair;
+      }
+      #div1 {
+        height: 70px;
+        width: 70px;
+        border: 2px solid black;
+        border-radius: 50%;
+        background-color: green;
+        z-index: 1;
+        position: relative;
+        left: -493px;
+        bottom: 64px;
+        cursor: crosshair;
+      }
+      #div0 {
+        height: 20px;
+        width: 20px;
+        border: 2px solid black;
+        border-radius: 50%;
+        background-color: white;
+        z-index: 1;
+        position: relative;
+        left: -546px;
+        bottom: 89px;
+        cursor: crosshair;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="game">
+      <img src="nervous.png" />
+      <h2>Nurvous Test Game</h2>
+      <h2 style="color: purple">click the Center</h2>
+
+      <button onclick="black()" id="div4" type="submit"></button>
+      <button onclick="red()" id="div3" type="submit"></button>
+      <button onclick="yellow()" id="div2" type="submit"></button>
+      <button onclick="green()" id="div1" type="submit"></button>
+      <button onclick="white()" id="div0" type="submit"></button>
+
+      <p id="result"></p>
+    </div>
+
+    <script>
+      function arrow(target) {
+        if (target == white) {
+          document.getElementById("result").innerHTML = "Score is : 20";
+          alert("perfect working Neuro system");
+        }
+        if (target == green) {
+          document.getElementById("result").innerHTML = "Score is : 10";
+        }
+        if (target == yellow) {
+          document.getElementById("result").innerHTML = "Score is : 5";
+        }
+        if (target == red) {
+          document.getElementById("result").innerHTML = "Score is : 1";
+        }
+        if (target == black) {
+          document.getElementById("result").innerHTML = "Score is : 0";
+          alert("please consult Neurologist");
+        }
+      }
+
+      function white() {
+        arrow(white);
+      }
+      function green() {
+        arrow(green);
+      }
+      function yellow() {
+        arrow(yellow);
+      }
+      function red() {
+        arrow(red);
+      }
+      function black() {
+        arrow(black);
+      }
+    </script>
+  </body>
+</html>
