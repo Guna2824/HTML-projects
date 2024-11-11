@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Application</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script>
+        const root = document.getElementById('root')
+        const form = document.createElement('div')
+        const h1 = document.createElement('h2')
+        const input1 = document.createElement('input')
+        const label1 = document.createElement('label')
+        const err1 = document.createElement('p')
+        const select = document.createElement('select')
+        const opt1 = document.createElement('option')
+        const opt2 = document.createElement('option')
+        const opt3 = document.createElement('option')
+        const selectlabel = document.createElement('label')
+        const selecterr = document.createElement('p')
+        const input2 = document.createElement('input')
+        const label2 = document.createElement('label')
+        const err2 = document.createElement('p')
+        const input3 = document.createElement('input')
+        const label3 = document.createElement('label')
+        const err3 = document.createElement('p')
+        const input4 = document.createElement('input')
+        const label4 = document.createElement('label')
+        const err4 = document.createElement('p')
+        const button = document.createElement('button')
+        const table = document.createElement('table')
+        const tr1 = document.createElement('tr')
+        
+        
+        h1.innerText = 'PARKING APP'
+        button.innerText = 'submit'
+        label1.innerText = 'Vehicle No'
+        label2.innerText = 'Name'
+        label3.innerText = 'Phone'
+        label4.innerText = 'E-Mail id'
+        selectlabel.innerText = 'Vehicle Type'
+        opt1.innerText = 'select'
+        opt2.innerText = 'Bike'
+        opt3.innerText = 'Car'
+        
+        const arr = []
+        
+        const ths = ['S.No', 'Vehicle No', 'Type', 'Name', 'Phone', 'InTime'];
+        ths.forEach(thText => {
+            const th = document.createElement('th');
+            th.innerText = thText;
+            tr1.appendChild(th);
+        });
+
+        root.style.fontFamily = 'sans-serif'
+        form.style.display = 'flex'
+        form.style.flexDirection = 'column'
+        form.style.gap = '0px'
+        form.style.justifyContent = 'center'
+        form.style.alignItems = 'center'
+        // form.style.border = '1px solid black'
+        // form.style.width = '300px'
+        form.style.paddingBottom = '15px'
+        input1.style.padding = '5px'
+        input2.style.padding = '5px'
+        input3.style.padding = '5px'
+        input4.style.padding = '5px'
+        input1.style.width = '250px'
+        input2.style.width = '250px'
+        input3.style.width = '250px'
+        input4.style.width = '250px'
+        select.style.padding = '5px'
+        select.style.width = '250px'
+        button.style.padding = '5px 15px'
+        err1.style.color = 'red'
+        err2.style.color = 'red'
+        err3.style.color = 'red'
+        err4.style.color = 'red'
+        selecterr.style.color = 'red'
+        input1.type = 'number'
+        input2.type = 'text'
+        input3.type = 'number'
+        input4.type = 'email'
+
+
+        const inTime =()=>{
+            let date = new Date().getDate();
+            let month = new Date().getMonth()+1;
+            let year = new Date().getFullYear();
+            let hour = new Date().getHours();
+            let minuts = new Date().getMinutes();
+
+            return `${date}-${month}-${year} ${hour}:${minuts}`;
+        }
+
+        input1.addEventListener('click',()=>err1.innerText = '')
+        input2.addEventListener('click',()=>err2.innerText = '')
+        input3.addEventListener('click',()=>err3.innerText = '')
+        input4.addEventListener('click',()=>err4.innerText = '')
+        select.addEventListener('click',()=>selecterr.innerText = '')
+
+        button.addEventListener('click',()=>{
+            let obj = {
+                vehicleNo: input1.value,
+                type : select.value,
+                name : input2.value,
+                phone : input3.value,
+                email : input4.value,
+                inTime : inTime()
+            }
+            if(!obj.vehicleNo){
+                err1.innerText = 'enter vehicle No'
+            }
+            if(obj.type === 'select'){
+                selecterr.innerText = 'select vehicle type'
+            }else if(!obj.type){
+                selecterr.innerText = 'select vehicle type'
+            }
+            if(!obj.name){
+                err2.innerText = 'enter name'
+            }
+            if(!obj.phone){
+                err3.innerText = 'enter phone no'
+            }
+            if(!obj.email){
+                err4.innerText = 'enter e-mail id'
+            }else{
+            arr.push(obj)
+            alert('vehicle entry')
+            const tr = document.createElement('tr');
+            const tds = [
+                arr.length,
+                obj.vehicleNo,
+                obj.type,
+                obj.name,
+                obj.phone,
+                obj.inTime,
+            ];
+
+            tds.forEach(tdText => {
+                const td = document.createElement('td');
+                td.innerText = tdText;
+                tr.appendChild(td);
+            });
+
+            table.appendChild(tr);
+            input1.value = ''
+            input2.value = ''
+            input3.value = ''
+            input4.value = ''
+            select.value = opt1
+            console.log(arr)
+            }
+        })
+
+
+        form.appendChild(h1)
+        form.appendChild(label1)
+        form.appendChild(input1)
+        form.appendChild(err1)
+        select.appendChild(opt1)
+        select.appendChild(opt2)
+        select.appendChild(opt3)
+        form.appendChild(selectlabel)
+        form.appendChild(select)
+        form.appendChild(selecterr)
+        form.appendChild(label2)
+        form.appendChild(input2)
+        form.appendChild(err2)
+        form.appendChild(label3)
+        form.appendChild(input3)
+        form.appendChild(err3)
+        form.appendChild(label4)
+        form.appendChild(input4)
+        form.appendChild(err4)
+        form.appendChild(button)
+
+        table.appendChild(tr1)
+
+        root.appendChild(form)
+        root.appendChild(table)
+    </script>
+</body>
+</html>

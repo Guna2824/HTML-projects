@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Calculater</title>
+</head>
+<body>
+   <div class="min-h-screen flex flex-col items-center justify-center gap-2">
+    <h1 class="text-2xl font-semibold ">Calculater</h1>
+    <div class="border  w-[300px] ">
+        <div id="root" class="h-[150px] p-2 border m-2 font-[mono] text-2xl "></div>
+        <div class="grid grid-cols-4 gap-2 text-center m-2">
+            <p id="C" class="border cursor-pointer p-2">C</p>
+            <p id="mud" class="border cursor-pointer p-2">%</p>
+            <p id="err" class="border cursor-pointer p-2"><</p>
+            <p id="divid" class="border cursor-pointer p-2">/</p>
+
+            <p id="seven" class="border cursor-pointer p-2">7</p>
+            <p id="eight" class="border cursor-pointer p-2">8</p>
+            <p id="nine" class="border cursor-pointer p-2">9</p>
+            <p id="mult" class="border cursor-pointer p-2">*</p>
+
+            <p id="four" class="border cursor-pointer p-2">4</p>
+            <p id="five" class="border cursor-pointer p-2">5</p>
+            <p id="six" class="border cursor-pointer p-2">6</p>
+            <p id="minus" class="border cursor-pointer p-2">-</p>
+
+            <p id="one" class="border cursor-pointer p-2">1</p>
+            <p id="two" class="border cursor-pointer p-2">2</p>
+            <p id="three" class="border cursor-pointer p-2">3</p>
+            <p id="plus" class="border cursor-pointer p-2">+</p>
+            
+            <p id="tzero" class="border cursor-pointer p-2">00</p>
+            <p id="zero" class="border cursor-pointer p-2">0</p>
+            <p id="point" class="border cursor-pointer p-2">.</p>
+            <p id="equal" class="border cursor-pointer p-2">=</p>
+
+
+            
+            
+        </div>
+    </div>
+   </div>
+
+   <script>
+    const root = document.getElementById('root')
+    const one = document.getElementById('one').addEventListener('click',(e)=>cal(e))
+    const two = document.getElementById('two').addEventListener('click',(e)=>cal(e))
+    const three = document.getElementById('three').addEventListener('click',(e)=>cal(e))
+    const four = document.getElementById('four').addEventListener('click',(e)=>cal(e))
+    const five = document.getElementById('five').addEventListener('click',(e)=>cal(e))
+    const six = document.getElementById('six').addEventListener('click',(e)=>cal(e))
+    const seven = document.getElementById('seven').addEventListener('click',(e)=>cal(e))
+    const eight = document.getElementById('eight').addEventListener('click',(e)=>cal(e))
+    const nine = document.getElementById('nine').addEventListener('click',(e)=>cal(e))
+    const zero = document.getElementById('zero').addEventListener('click',(e)=>cal(e))
+    const plus = document.getElementById('plus').addEventListener('click',(e)=>caal(e))
+    const minus = document.getElementById('minus').addEventListener('click',(e)=>caal(e))
+    const mult = document.getElementById('mult').addEventListener('click',(e)=>caal(e))
+    const divid = document.getElementById('divid').addEventListener('click',(e)=>caal(e))
+    const mud = document.getElementById('mud').addEventListener('click',(e)=>caal(e))
+    const equal = document.getElementById('equal').addEventListener('click',()=>sum())
+    const C = document.getElementById('C').addEventListener('click',()=>cancle())
+    const err = document.getElementById('err').addEventListener('click',()=>erras())
+    const point = document.getElementById('point').addEventListener('click',(e)=>cal(e))
+    const tzero = document.getElementById('tzero').addEventListener('click',(e)=>cal(e))
+
+    
+    let x = '';
+
+    const cal =(e)=>{
+        x = x + e.target.innerHTML
+        root.innerText = x
+    }
+
+    const caal =(e)=>{
+        let y = e.target.innerHTML;
+            x = x + y;
+        root.innerHTML = x;
+    }
+
+    const sum =()=>{
+        let ans = eval(x)
+        if(ans){
+            root.innerHTML = ans
+        }
+        x = ''
+    }
+
+    const cancle =()=>{
+        x = '';
+        root.innerHTML = x
+    }
+
+    const erras =()=>{
+        x = x.slice(0,x.length-1)
+        root.innerHTML = x
+    }
+
+   </script>
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jwell shop</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .list{
+        padding: 2px;
+        display: flex;
+        flex-direction: column;
+        font-weight: 600;
+        color: #c9a236;
+      }
+      .span{
+        width: 0;
+        height: 3px;
+      }
+      .list:hover{
+        .span{
+          transition: all;
+          transition-duration: 1s;
+          width: 100%;
+          background: #c9a236;
+        }
+      }
+      .toggleNav.active{
+        display: block;
+      }
+      .products-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        margin: 25px;
+      }
+      .product-card {
+        border: 1px solid #ddd;
+        padding: 20px;
+        width: 200px;
+        text-align: center;
+        position: relative;
+        transition: transform 0.5s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3;
+        cursor: pointer;
+      }
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0px 8px 20px #c9a236;
+      }
+      .product-card img {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 15px;
+      }
+      .product-card p {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 10px;
+        text-align:center;
+        font-weight: 700;
+      }
+      .rating {
+        font-size: 14px;
+        color: #f5c518;
+      }
+      .rating .reviews {
+        font-size: 12px;
+        color: #888;
+      }
+      .top-products h2 {
+        font-size: 32px;
+        color: #2c2c2c;
+        margin: 20px;
+        text-align: center;
+      }
+      .tabs {
+        margin-bottom: 30px;
+      }
+      .tab {
+        background-color:#c9a236;
+        border: 2px solid #a7862d;
+        padding: 10px 20px;
+        margin: 0 5px;
+        cursor: pointer;
+        font-size: 16px;
+        color: white;
+        font-weight: 600;
+        transition: all 0.8s ease-in-out;
+        box-shadow: 2px 2px 10px #dfca91;
+      }
+      .tab:hover {
+        color: white;
+        background-color: #dfca91;
+      }
+      .container{
+        background-color:#f5ede6 ;
+        padding: 50px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        margin:10px auto 100px auto;
+      }
+      .box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color:  #f5ede6;;
+        padding: 20px;
+        width: 150px;
+        height: 150px;
+        border-radius: 8px;
+        background-color: #c9a236;
+        transition: 1s;
+        margin-bottom: 75px;
+      }
+      .box img {
+        width: 120px; 
+        height: 150px;
+        margin-bottom: 10px;
+        
+      }
+      .box:hover{
+        transform: scale(1.3);
+        background-color: white;
+        box-shadow: 2px 2px 2px  #d8a310;
+        z-index: 2;
+      }
+      .box p {
+        margin-top:30% ;
+        font-size: 16px;
+        color: #333;
+        font-weight: 600;
+        letter-spacing: 1px;
+        position: relative;
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+      .box p::after {
+        content: '';
+        display: block;
+        width: 30px;
+        height: 2px;
+        background-color: gold;
+        margin: 5px auto 0;
+      }
+      .head p{
+        font-size: 2rem;
+        font-weight: 800;
+        justify-content: center;
+        text-align: center;
+        font-family: 'Times New Roman', Times, serif;
+        margin-top: 100px;
+      }
+      @media (max-width: 768px) {
+        .products-container{
+          display: flex;
+          flex-direction: column;
+        }
+        .container{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+
+        }
+      }
+    </style>
+
+</head>
+<body style="margin: 0; padding: 0;">
+  <nav class=" fixed z-20 top-0 w-full p-[10px] bg-[#c9a236] text-[12px] lg:text-[16px] text-white font-semibold text-center font-sans  " >
+    <p>Save 10% when you join,joice jwellery, use promo</p>
+  </nav>
+
+    <header class="mt-[45px] p-2  ">
+    
+    <nav class="flex flex-row items-center justify-around" >
+        <div class="logo ">
+            <img src="./Asset/jwellery.png" width="75" height="75" class="" alt="logo">
+        </div>
+        <div class="menu-icon cursor-pointer block lg:hidden flex flex-col gap-[3px] p-[5px] border-2 border-[#c9a236] rounded-md  " id="menu-icon" >
+            <span class="h-[3px] w-[25px] bg-[#c9a236] "></span>
+            <span class="h-[3px] w-[25px] bg-[#c9a236] "></span>
+            <span class="h-[3px] w-[25px] bg-[#c9a236] "></span>
+        </div>
+        
+        <ul class="navitem hidden lg:flex flex-row items-center justify-center gap-5 hidden" >
+            <li class="list">
+              <a href="">DEMOS</a>
+              <span class="span"></span>
+            </li>
+            <li class="list">
+              <a href="">SHOP BY CATEGOREIES</a>
+              <span class="span"></span>
+            </li>
+            <li class="list">
+              <a href="">BLOG</a>
+              <span class="span"></span>
+            </li>
+            <li class="list">
+              <a href="">SHOP</a>
+              <span class="span"></span>
+            </li>
+            <li class="list">
+              <a href="">ELEMENTS</a>
+              <span class="span"></span>
+            </li>
+            <li class="list">
+              <a href="">FEATURES</a>
+              <span class="span"></span>
+            </li>
+        </ul>
+        <ul class="icon hidden lg:flex flex-row items-center justify-center gap-5 hidden">
+            <li><a href="#"><i class="fas fa-search text-[#c9a236] transition-transform duration-300 p-1 hover:-translate-y-3"></i></a></li>
+            <li><a href="#"><i class="fas fa-user text-[#c9a236] transition-transform duration-300 p-1 hover:-translate-y-3"></i></a></li>
+            <li><a href="#"><i class="fas fa-shopping-cart text-[#c9a236] transition-transform duration-300 p-1 hover:-translate-y-3"></i></a></li>
+        </ul>
+        
+    </nav>
+    <div class=" lg:hidden w-[250px] top-[130px] right-0  absolute z-10">
+      <ul class="toggleNav hidden font-semibold flex flex-col items-center justify-center gap-2 p-1 bg-[#c9a236] ">
+        <li class="transition-color duration-300 ease-linear cursor-pointer p-1 w-full text-white text-center hover:text-[#c9a236] hover:bg-white"><a href="">DEMOS</a></li>
+        <li class="transition-color duration-300 ease-linear cursor-pointer p-1 w-full text-white text-center hover:text-[#c9a236] hover:bg-white"><a href="">SHOP BY CATEGOREIES</a></li>
+        <li class="transition-color duration-300 ease-linear cursor-pointer p-1 w-full text-white text-center hover:text-[#c9a236] hover:bg-white"><a href="">BLOG</a></li>
+        <li class="transition-color duration-300 ease-linear cursor-pointer p-1 w-full text-white text-center hover:text-[#c9a236] hover:bg-white"><a href="">SHOP</a></li>
+        <li class="transition-color duration-300 ease-linear cursor-pointer p-1 w-full text-white text-center hover:text-[#c9a236] hover:bg-white"><a href="">ELEMENTS</a></li>
+        <li class="transition-color duration-300 ease-linear cursor-pointer p-1 w-full text-white text-center hover:text-[#c9a236] hover:bg-white"><a href="">FEATURES</a></li>
+      </ul>
+    </div>
+</header>
+
+<section class="image ">
+    <div class="show  h-[90vh] bg-[url('./Asset/bg.jpg')] w-full object-contain flex flex-row items-center justify-center">
+      <img class=" h-full w-[50%] lg:object-contain " src="./Asset/image3.png" alt="img">
+      <div class=" h-full w-[50%] flex flex-col items-center justify-center gap-5">
+        <p class="text-2xl text-center font-semibold text-white drop-shadow-[2px_2px_5px_var(--tw-shadow-color)] shadow-[#c9a236]">ELEGANT COLLECTION FOR YOUR QUEEN</p>
+        <button class="hover:border-2 border-2 hover:border-[#c9a236] px-2 py-1 rounded-md text-[14px] bg-[#c9a236] text-white font-semibold hover:bg-[#8b7026] transition-colors duration-500 ease-in-out " >SHOP NOW</button>
+      </div>
+    </div>
+</section>
+<div class="head">
+<p>TRENDINGS</p>
+</div>
+<div class="container">
+    <div class="box">
+      <img src="./Asset/bangle.png" alt="Chain Icon">
+      <p>BANGLE</p>
+    </div>
+    <div class="box">
+      <img src="./Asset/ring.png" alt="Chain Icon">
+      <p>RING</p>
+    </div>
+    <div class="box">
+      <img src="./Asset/errarings.png" alt="Chain Icon">
+      <p>ERRARINGS</p>
+
+    </div>
+    <div class="box">
+      <img src="./Asset/choker.png" alt="Chain Icon">
+      <p>CHOKER</p>
+    </div>
+    </div>
+    <div class="head">
+        <p>NEW COLLECTIONS</p>
+    </div>
+    <div class="ima">
+     <img src="./Asset/sc3.png" alt="imag">
+     <img src="./Asset/sc4.png" alt="imag">
+     <img src="./Asset/sc5.png" alt="imag">
+
+    </div>   
+    <section class="top-products">
+        <h2>Top Products</h2>
+        <!-- <div class="tabs">
+            <button class="tab ">Rings</button>
+            <button class="tab">Earrings</button>
+            <button class="tab">Necklace</button>
+        </div> -->
+
+        <div class="products-container">
+
+            <div class="flex flex-col gap-3">
+              <div class="product-card">
+                <img src="./Asset/bangle.png" alt="Product Image 1">
+                <p>9CT WHITE GOLD 0.33CT TOTAL DIAMOND ETERNITY</p>
+                <div class="rating">
+                    <span>★ ★ ★ ★ ★</span>
+                    <span class="reviews"></span>
+                    <h2>$ 310</h2>
+                    <h4>Add to cart-></h4>
+                    
+                </div>
+            </div>
+            <button class="tab ">Rings</button>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+              <div class="product-card">
+                <img src="./Asset/choker.png" alt="Product Image 2">
+                <p>9CT WHITE GOLD 0.25CT TOTAL DIAMOND SOLITAIRE</p>
+                <div class="rating">
+                    <span>★ ★ ★ ★ ★</span>
+                    <h2>$ 150</h2>
+                    <h4>Add to cart-></h4>
+                </div>
+            </div>
+            <button class="tab">Necklace</button>
+            </div>
+            
+            <div class="flex flex-col gap-3">
+              <div class="product-card">
+                <img src="./Asset/errarings.png" alt="Product Image 3">
+                <p>9CT WHITE GOLD DIAMOND TWISTED ETERNITY RING</p>
+                <div class="rating">
+                    <span>★ ★ ★ ★ ★</span>
+                    <h2>$ 245</h2>
+                    <h4>Add to cart-></h4>
+                </div>
+            </div>
+            <button class="tab">Earrings</button>
+            </div>
+
+        </div>
+    </section>
+    <footer class="bg-[rgb(50,50,50)] p-5 text-white flex flex-col justify-left lg:items-center gap-5 lg:text-center">
+
+      <div class="footer-section logo-section flex flex-col gap-3 justify-center items-center p-2">
+        <img src="./Asset/jwellery.png" height="75" width="75" alt="Joice Jewelry Logo" class="footer-logo">
+        <p class="text-center italic">"Unleash the radiance of your inner beauty with our premium jewelry brand - a perfect blend of sophistication and style."</p>
+      </div>
+
+        <div class="footer-container w-full flex flex-col gap-5 lg:flex-row items-start justify-center lg:justify-around lg:items:center lg:text-center">
+
+          <div class="footer-section">
+            <h3 class="text-lg font-semibold">ACCOUNT</h3>
+            <ul>
+              <li class="p-1 text-[14px]"><a href="#">Dashboard</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Orders</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Wishlist</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Addresses</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="text-lg font-semibold">CATELOUG</h3>
+            <ul>
+              <li class="p-1 text-[14px]"><a href="#">Shop by category</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Shop by brand</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Promotions</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Sitemap</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3 class="text-lg font-semibold">HELP</h3>
+            <ul>
+              <li class="p-1 text-[14px]"><a href="#">Features</a></li>
+              <li class="p-1 text-[14px]"><a href="#">FAQ</a></li>
+              <li class="p-1 text-[14px]"><a href="#">About us</a></li>
+              <li class="p-1 text-[14px]"><a href="#">Contact us</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section contact-section">
+            <h3 class="text-lg font-semibold">CONTACT US</h3>
+            <p class="p-1 text-[14px]"><i class="fa fa-map-marker-alt"></i> 7031 N 35th Ave, Phoenix, <br/> Arkansas United States</p>
+            <p class="p-1 text-[14px]"><i class="fa fa-phone-alt"></i> Call us 8 AM - 10 PM<br>6668 5555 8464</p>
+          </div>
+
+        </div>
+ 
+      </footer>
+
+      <div class="footer-links text-center p-1 bg-[rgb(20,20,20)]  text-[14px] flex flex-wrap lg:flex-row items-center justify-center lg:gap-5"> 
+        <a class="px-2 py-1 rounded-md m-1 text-white hover:underline" href="#">Terms of use</a>
+        <a class="px-2 py-1 rounded-md m-1 text-white hover:underline" href="#">Privacy Policy</a>
+        <a class="px-2 py-1 rounded-md m-1 text-white hover:underline" href="#">Interest Based Ads</a>
+        <a class="px-2 py-1 rounded-md m-1 text-white hover:underline" href="#">Accessibility</a>
+      </div>
+
+      <script src="script.js"></script>
+   
+</body>
+</html>

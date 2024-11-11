@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        canvas {
+          border: 1px solid #000;
+          cursor: crosshair;
+          background: transparent;
+        }
+      </style>
+</head>
+<body>
+    <h1>HTML test</h1>
+
+    <div style="padding-left: 75px;">
+        <input type="submit" onclick="showDrawing()"><br/><br/>
+        <input type="button" onclick="downloadImage()" value="Download Image"><br/><br/>
+    </div>
+
+    <div style="margin-left: 25px;">
+        <h4>Draw on the Canvas</h4>
+
+        <div>
+            <div style="display: inline-block; height: 20px; width: 20px; border: 1px solid black; background: #0000ff;" id="blue"></div>
+            <div style="display: inline-block; height: 20px; width: 20px; border: 1px solid black; background: red;" id="red"></div>
+            <div style="display: inline-block; height: 20px; width: 20px; border: 1px solid black; background: green;" id="green"></div>
+        </div>
+        
+        <canvas id="drawingCanvas" ></canvas>
+    </div>
+
+    <div id="show"></div>
+
+    <script>
+
+        let clr;
+        const clr1 = document.getElementById('blue')
+        clr1.addEventListener('click', ()=>{
+            clr = clr1.style.background
+            ctx.strokeStyle = clr
+        })
+       
+        const show = document.getElementById('show')
+        // Get the canvas and context
+        const canvas = document.getElementById('drawingCanvas');
+        const ctx = canvas.getContext('2d');
+      
+        let isDrawing = false;
+      
+        // Mouse down event to start drawing
+        canvas.addEventListener('mousedown', (event) => {
+          isDrawing = true;
+          ctx.beginPath();
+          ctx.moveTo(event.offsetX, event.offsetY);
+        });
+      
+        // Mouse move event to draw
+        canvas.addEventListener('mousemove', (event) => {
+          if (isDrawing) {
+            ctx.lineTo(event.offsetX, event.offsetY);
+            ctx.stroke();
+          }
+        });
+      
+        // Mouse up event to stop drawing
+        canvas.addEventListener('mouseup', () => {
+          isDrawing = false;
+        });
+      
+        // Mouse leave event to stop drawing when the mouse leaves the canvas
+        canvas.addEventListener('mouseleave', () => {
+          isDrawing = false;
+        });
+
+        function showDrawing() {
+      // Convert the canvas content to a data URL
+      const imageDataURL = canvas.toDataURL();
+      // Create an image element and set the data URL as its source
+      const img = document.createElement('img');
+      img.src = imageDataURL;
+      img.alt = "Canvas Drawing";
+      img.style.background = "transparent";
+      img.style.marginTop = "10px";
+      
+      // Clear previous image and append the new one
+      show.innerHTML = '';
+      show.appendChild(img);
+    }
+
+    function downloadImage() {
+      const imageDataURL = canvas.toDataURL('image/png'); // Get the data URL as PNG
+      const downloadLink = document.createElement('a'); // Create a download link
+      downloadLink.href = imageDataURL;
+      downloadLink.download = 'canvas-drawing.png'; // Set the file name for the download
+      downloadLink.click(); // Programmatically click the download link
+    }
+        
+      </script>
+
+</body>
+</html>
